@@ -1,0 +1,13 @@
+D:\ConverterProject\Converter_sharp\Converter_sharp\bin\Debug\netcoreapp3.1\Converter_sharp.exe
+D:\ConverterProject\Converter_sharp\Converter_sharp\bin\Debug\netcoreapp3.1\Converter_sharp.deps.json
+D:\ConverterProject\Converter_sharp\Converter_sharp\bin\Debug\netcoreapp3.1\Converter_sharp.runtimeconfig.json
+D:\ConverterProject\Converter_sharp\Converter_sharp\bin\Debug\netcoreapp3.1\Converter_sharp.runtimeconfig.dev.json
+D:\ConverterProject\Converter_sharp\Converter_sharp\bin\Debug\netcoreapp3.1\Converter_sharp.dll
+D:\ConverterProject\Converter_sharp\Converter_sharp\bin\Debug\netcoreapp3.1\Converter_sharp.pdb
+D:\ConverterProject\Converter_sharp\Converter_sharp\obj\Debug\netcoreapp3.1\Converter_sharp.csprojAssemblyReference.cache
+D:\ConverterProject\Converter_sharp\Converter_sharp\obj\Debug\netcoreapp3.1\Converter_sharp.csproj.CoreCompileInputs.cache
+D:\ConverterProject\Converter_sharp\Converter_sharp\obj\Debug\netcoreapp3.1\Converter_sharp.AssemblyInfoInputs.cache
+D:\ConverterProject\Converter_sharp\Converter_sharp\obj\Debug\netcoreapp3.1\Converter_sharp.AssemblyInfo.cs
+D:\ConverterProject\Converter_sharp\Converter_sharp\obj\Debug\netcoreapp3.1\Converter_sharp.dll
+D:\ConverterProject\Converter_sharp\Converter_sharp\obj\Debug\netcoreapp3.1\Converter_sharp.pdb
+D:\ConverterProject\Converter_sharp\Converter_sharp\obj\Debug\netcoreapp3.1\Converter_sharp.genruntimeconfig.cache
