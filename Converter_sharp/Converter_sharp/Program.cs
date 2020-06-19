@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CurrencyConverter
 {
     class Program
     {
-        static int InputInt(string prompt = "", int min = int.MinValue, int max = int.MaxValue)
+        static int InputInt(int defaultVal = 0, string prompt = "", int min = int.MinValue, int max = int.MaxValue)
         {
             int output;
             string input;
@@ -18,8 +15,12 @@ namespace CurrencyConverter
             {
                 Console.Write(prompt);
                 input = Console.ReadLine();
-                isOk = int.TryParse(input, out output);
 
+                isOk = int.TryParse(input, out output);
+                //default value when input is empty
+                if (input == "")
+                    return defaultVal;
+           
                 if (isOk && (output < min || output > max))
                 {
                     Console.WriteLine($"number {output} not in range[{min}; {max}]");
@@ -35,7 +36,7 @@ namespace CurrencyConverter
             return output;
         }
 
-        static float InputFloat(string prompt = "", float min = float.MinValue, float max = float.MaxValue)
+        static float InputFloat(float defaultVal = 1, string prompt = "", float min = float.MinValue, float max = float.MaxValue)
         {
             float output;
             string input;
@@ -45,7 +46,11 @@ namespace CurrencyConverter
             {
                 Console.Write(prompt);
                 input = Console.ReadLine();
-                isOk = float.TryParse(input, out output);
+                isOk = float.TryParse(input, out output); 
+                
+                //default value when input is empty
+                if (input == "")
+                    return defaultVal;
 
                 if (isOk && (output < min || output > max))
                 {
@@ -70,7 +75,7 @@ namespace CurrencyConverter
 
                 for (int i = 0; i < menu.Count; i++)
                     Console.WriteLine($"[{i}] {menu[i]}");
-                choise = InputInt("Your choise: ", 0, menu.Count - 1);
+                choise = InputInt(0, "Your choise: ", 0, menu.Count - 1);
                 return choise;
             }
 
@@ -122,13 +127,13 @@ namespace CurrencyConverter
                 }
 
                 Console.Clear();
-                float convValue = InputFloat("Enter convert value: ", 1);
+                float convValue = InputFloat(1, "Enter convert value: ", 1);
 
                 //enter currency rate
                 Console.WriteLine();
                 List<float> selCurrenciesRate = new List<float>();
                 for (int i = 0; i < selCurrencies.Count; i++)
-                    selCurrenciesRate.Add(InputFloat($"Enter {currencies[srcCurr]} cost in {selCurrencies[i]}: ", 0));
+                    selCurrenciesRate.Add(InputFloat(1, $"Enter {currencies[srcCurr]} cost in {selCurrencies[i]}: ", 0));
 
                 //convert
                 Console.Clear();
