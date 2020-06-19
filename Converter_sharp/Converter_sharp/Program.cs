@@ -20,7 +20,7 @@ namespace CurrencyConverter
                 //default value when input is empty
                 if (input == "")
                     return defaultVal;
-           
+
                 if (isOk && (output < min || output > max))
                 {
                     Console.WriteLine($"number {output} not in range[{min}; {max}]");
@@ -46,8 +46,8 @@ namespace CurrencyConverter
             {
                 Console.Write(prompt);
                 input = Console.ReadLine();
-                isOk = float.TryParse(input, out output); 
-                
+                isOk = float.TryParse(input, out output);
+
                 //default value when input is empty
                 if (input == "")
                     return defaultVal;
@@ -141,18 +141,13 @@ namespace CurrencyConverter
                     Console.WriteLine($"{convValue} {currencies[srcCurr]} = {convValue * selCurrenciesRate[i]} {selCurrencies[i]}");
             }
 
-            main();
-            while (true)
+
+            do
             {
+                Console.Clear();
+                main();
                 Console.Write("\nConvert again? (y/n): ");
-                if (Console.ReadKey().Key == ConsoleKey.Y)
-                {
-                    Console.Clear();
-                    main();
-                }
-                else
-                    break;
-            }
+            }while(Console.ReadKey().Key == ConsoleKey.Y);
         }
     }
 }
