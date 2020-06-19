@@ -12,7 +12,7 @@ namespace CurrencyConverter
         {
             int output;
             string input;
-            bool isOk = false;
+            bool isOk;
 
             do
             {
@@ -39,7 +39,7 @@ namespace CurrencyConverter
         {
             float output;
             string input;
-            bool isOk = false;
+            bool isOk;
 
             do
             {
@@ -62,29 +62,92 @@ namespace CurrencyConverter
             return output;
         }
 
-
-
         static void Main(string[] args)
         {
-            void main()
-            {
-                Console.WriteLine("Choose source currency");
-                List<string> currencies = new List<string>() { "USD", "EUR", "UAH", "PLN", "BYR", "CNY", "RUB" };
-                int srcCurr = MenuSelector(currencies);
-                Console.Clear();
-            }
-
             int MenuSelector(List<string> menu)
             {
                 int choise;
 
-                for (int i = 0; i < menu.Count; i++)
+                for (int i = 0; i < menu.Count; i++) 
                     Console.WriteLine($"[{i}] {menu[i]}");
                 choise = InputInt("Your choise: ", 0, menu.Count - 1);
                 return choise;
             }
 
+            //target currencies selection
+            List<string> CurrenciesSelector(List<string> currencies)
+            {
+                List<string> selected = new List<string>();
+                int choise;
+                bool isOneItemSelected = false;
+
+                while (true) 
+                {
+                    Console.WriteLine("Choose target currency:");
+                    choise = MenuSelector(currencies);
+
+                    if (!isOneItemSelected)
+                    {
+                        isOneItemSelected = true;
+                        currencies.Insert(0, "Convert");
+                        choise++;
+                    }
+
+                    if ((choise == 0 && isOneItemSelected) || currencies.Count == 2) 
+                        break;
+
+                    selected.Add(currencies[choise]);
+                    currencies.Remove(currencies[choise]);
+
+                    Console.Clear();
+                }
+
+                return selected;
+            }
+
+
+
+            void main()
+            {
+                Console.WriteLine("Choose source currency:");
+                List<string> currencies = new List<string>() { "USD", "EUR", "UAH", "PLN", "BYR", "CNY", "RUB" };
+                int srcCurr = MenuSelector(currencies);
+                Console.Clear();
+
+                List<string> selCurrencies;
+                {
+                    List<string> param = new List<string>(currencies); //copy currency list
+                    param.Remove(currencies[srcCurr]); //delete source currency from new list
+                    selCurrencies = CurrenciesSelector(param);
+                }
+
+                Console.Clear();
+                float convValue = InputFloat("Enter convert value: ", 1);
+
+                //enter currency rate
+                Console.WriteLine();
+                List<float> selCurrenciesRate = new List<float>();
+                for (int i = 0; i < selCurrencies.Count; i++)
+                    selCurrenciesRate.Add(InputFloat($"Enter {currencies[srcCurr]} cost in {selCurrencies[i]}: ", 0));
+
+                //convert
+                Console.Clear();
+                for (int i = 0; i < selCurrencies.Count; i++)
+                    Console.WriteLine($"{convValue} {currencies[srcCurr]} = {convValue * selCurrenciesRate[i]} {selCurrencies[i]}");
+            }
+
             main();
+            while (true)
+            {
+                Console.Write("\nConvert again? (y/n): ");
+                if (Console.ReadKey().Key == ConsoleKey.Y)
+                {
+                    Console.Clear();
+                    main();
+                }
+                else
+                    break;
+            }
         }
     }
 }
